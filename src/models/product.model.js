@@ -2,11 +2,11 @@
 export default class ProductModel{
 
     constructor(_id, _name, _desc, _price, _imageUrl){
-        this._id = _id;
-        this._name = _name;
-        this._desc = _desc;
-        this._price = _price;
-        this._imageUrl = _imageUrl;
+        this.id = _id;
+        this.name = _name;
+        this.desc = _desc;
+        this.price = _price;
+        this.imageUrl = _imageUrl;
     }
 
     static get(){
