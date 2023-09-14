@@ -2,6 +2,7 @@ import express from 'express'
 import ProductController from './src/controllers/product.controller.js';
 import ejsLayouts from 'express-ejs-layouts'
 import path from 'path';
+import validation from './src/middlewares/validation.middleware.js';
 
 const server = express();
 
@@ -19,7 +20,7 @@ server.use(ejsLayouts);
 const productController = new ProductController(); 
 server.get('/', (productController.getProducts));
 server.get('/new', (productController.getForm));
-server.post('/', (productController.addNewProduct));
+server.post('/',validation, (productController.addNewProduct));
 
 server.use(express.static('src/views'));
     // return res.send('Welcome to Inventory App');
