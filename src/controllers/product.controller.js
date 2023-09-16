@@ -27,4 +27,25 @@ export default class ProductController{
         let products = ProductModel.get();
         res.render("products", {products:products});
     }
+
+    getUpdateProductView(req, res, next){
+        // 1. if product exist then return views
+
+        const id = req.params.id;
+
+        const productFound = ProductModel.getById(id);
+        if(productFound){
+            res.render('update_product',{product:productFound,errorMessage:null},);
+        }
+        // 2. Else return error
+        else{
+            res.status(401).send('Product not found');
+        }
+    }
+
+    postUpdateProduct(req,res){
+        ProductModel.update(req.body);
+        let products = ProductModel.get();
+        res.render("products", {products:products});
+    }
 }

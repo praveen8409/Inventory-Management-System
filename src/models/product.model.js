@@ -24,6 +24,15 @@ export default class ProductModel{
 
       products.push(newProduct);
     }
+
+    static getById(id){
+      return products.find((p) => p.id == id);
+    }
+
+    static update(productObj){
+      const index = products.findIndex((p)=> p.id == productObj.id);
+      products[index] = productObj;
+    }
 }
 
 var products = [
@@ -49,3 +58,5 @@ var products = [
       'https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg',
     ),
   ]
+
+  ProductModel
