@@ -23,6 +23,7 @@ server.get('/new', (productController.getForm));
 server.post('/',validation, (productController.addNewProduct));
 server.get('/update_product/:id', (productController.getUpdateProductView));
 server.post('/update-product',productController.postUpdateProduct)
+server.get('/delete-product/:id', productController.deleteProduct);
 
 server.use(express.static('src/views'));
     // return res.send('Welcome to Inventory App');
