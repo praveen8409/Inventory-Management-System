@@ -6,6 +6,8 @@ import validation from './src/middlewares/validation.middleware.js';
 
 const server = express();
 
+server.use(express.static('public'));
+
 // parse form data
 server.use(express.urlencoded({extended:true}));
 
@@ -23,7 +25,7 @@ server.get('/new', (productController.getForm));
 server.post('/',validation, (productController.addNewProduct));
 server.get('/update_product/:id', (productController.getUpdateProductView));
 server.post('/update-product',productController.postUpdateProduct)
-server.get('/delete-product/:id', productController.deleteProduct);
+server.post('/delete-product/:id', productController.deleteProduct);
 
 server.use(express.static('src/views'));
     // return res.send('Welcome to Inventory App');
