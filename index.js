@@ -27,6 +27,7 @@ const userController = new UserController();
 
 
 server.get('/register',userController.getRegister);
+server.get('/login',userController.getLogin);
 server.get('/', (productController.getProducts));
 server.get('/new', (productController.getForm));
 server.post('/',uploadFile.single('imageUrl'),validation, (productController.addNewProduct));
