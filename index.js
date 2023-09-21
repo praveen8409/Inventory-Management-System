@@ -1,5 +1,6 @@
 import express from 'express'
 import ProductController from './src/controllers/product.controller.js';
+import UserController from './src/controllers/user.contrpller.js';
 import ejsLayouts from 'express-ejs-layouts'
 import path from 'path';
 import validation from './src/middlewares/validation.middleware.js';
@@ -21,6 +22,11 @@ server.use(ejsLayouts);
 
 // create an instance of ProductController
 const productController = new ProductController(); 
+// create an instance of ProductController
+const userController = new UserController();
+
+
+server.get('/register',userController.getRegister);
 server.get('/', (productController.getProducts));
 server.get('/new', (productController.getForm));
 server.post('/',uploadFile.single('imageUrl'),validation, (productController.addNewProduct));
