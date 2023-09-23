@@ -1,12 +1,13 @@
 import UserModel from "../models/user.model.js";
 import ProductModel from "../models/product.model.js";
+import session from "express-session";
 export default class UserController{
     getRegister(req, res){
         res.render('register');
     }
 
     getLogin(req,res){
-        res.render('login');
+        res.render('login',{ errorMessage : null});
     }
 
     postRegister(req,res){
@@ -26,6 +27,11 @@ export default class UserController{
             errorMessage: 'Invalid Credentials',
           });
         }
+
+        // write session cookie code?
+        req.session.userEmail = email;
+
+
         var products = ProductModel.get();
         res.render('products', { products });
       }
