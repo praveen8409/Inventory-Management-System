@@ -38,6 +38,7 @@ server.get('/register',userController.getRegister);
 server.get('/login',userController.getLogin);
 server.post('/register', userController.postRegister);
 server.post('/login',userController.postLogin);
+server.get('/logout',userController.logout);
 server.get('/',auth, (productController.getProducts));
 server.get('/new',auth, (productController.getForm));
 server.post('/',uploadFile.single('imageUrl'),validation, (productController.addNewProduct));
