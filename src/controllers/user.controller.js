@@ -7,7 +7,7 @@ export default class UserController{
     }
 
     getLogin(req,res){
-        res.render('login',{ errorMessage : null});
+        res.render('login',{ errorMessage : null,});
     }
 
     postRegister(req,res){
@@ -33,6 +33,6 @@ export default class UserController{
 
 
         var products = ProductModel.get();
-        res.render('products', { products });
+        res.render('products', { products, userEmail:req.session.userEmail });
       }
 }
